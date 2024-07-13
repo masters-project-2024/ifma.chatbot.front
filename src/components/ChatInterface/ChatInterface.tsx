@@ -47,11 +47,11 @@ export const ChatInterface = () => {
     mutate(message);
   };
 
-  const handleInputMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(e.target.value);
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === "Enter") {
       handleSendQuestion();
     }
@@ -121,12 +121,13 @@ export const ChatInterface = () => {
             ))}
           </div>
           <div className="chatbox__footer">
-            <input
-              type="text"
+            <textarea
               placeholder="Digite sua dúvida aqui..."
               onChange={handleInputMessage}
               onKeyUp={handleKeyPress}
               value={message}
+              dir="auto"
+              rows={1}
             />
             <button
               className="chatbox__send--footer send__button"

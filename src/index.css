@@ -19,24 +19,17 @@ code {
 }
 
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 100%;
   background: #f1f1f1;
 }
-
-/* *,
-html {
-  --primaryGradient: linear-gradient(93.12deg, #581b98 0.52%, #9c1de7 100%);
-  --secondaryGradient: linear-gradient(
-    268.91deg,
-    #581b98 -2.14%,
-    #9c1de7 99.69%
-  );
-  --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
-  --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
-  --primary: #581b98;
-} */
+textarea {
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 100%;
+  background: #f1f1f1;
+}
 
 *,
 html {

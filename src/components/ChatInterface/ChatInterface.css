@@ -147,13 +147,15 @@
   border-bottom-left-radius: 10px;
 }
 
-.chatbox__footer input {
+.chatbox__footer textarea {
   width: 80%;
   border: none;
   padding: 10px 10px;
-  border-radius: 30px;
+  border-radius: 10px;
   text-align: left;
   font-size: 13px;
+  overflow-y: hidden;
+  /* resize: none;  VOU TER QUE MELHORAR ISSO AQUI */
 }
 
 .chatbox__button button,
