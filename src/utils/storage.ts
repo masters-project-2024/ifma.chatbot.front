@@ -1,4 +1,4 @@
-const INITIAL_MENSAGEM_CHAT = `Olá! Eu sou o assistente virtual do Instituto Federal do Maranhão - Campus Caxias 😊. \n\n Como posso ajudar você hoje?`;
+const INITIAL_MENSAGEM_CHAT = `Olá! Eu sou o assistente virtual do IFMA - Campus Caxias 😊. \n\n Como posso ajudar você hoje?`;
 
 export const saveChatHistory = (
   history: { userMessage: string; botResponse: string }[]

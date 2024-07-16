@@ -1,79 +1,17 @@
 // import { ChatbotStyled } from "./styled";
-import "./ChatInterface.css";
 import imageIfma from "../../public/images/logo.png";
-import iconChat from "../../public/images/chatbox-icon.svg";
-import iconSend from "../../public/images/send.svg";
 import iconClose from "../../public/images/close.svg";
-import { useEffect, useState } from "react";
-import sendMessage from "../../services/sendMessage";
-import {
-  addMessageToHistory,
-  getChatHistory,
-  initializeChatHistory,
-} from "../../utils/storage";
-import { useMutation } from "react-query";
 import Spinner from "../Spinner";
-
-type PropsChat = {
-  userMessage: string;
-  botResponse: string;
-};
+import { ChatbotStyled } from "./styled";
+import ChatButton from "../ChatButton";
+import InputMessage from "../InputMessage";
+import { useEditor } from "../../Provider/Editor";
 
 export const ChatInterface = () => {
-  const [message, setMessage] = useState<string>("");
-  const [response, setResponse] = useState<string>("");
-  const [open, setOpen] = useState<boolean>(false);
-  const [chatHistory, setChatHistory] = useState<PropsChat[]>([]);
-
-  const { isLoading, mutate, isError } = useMutation(sendMessage, {
-    onSuccess: (data) => {
-      if (data.response) addMessageToHistory(message, data.response);
-      setChatHistory(getChatHistory());
-      setResponse(data.response);
-    },
-    onError: (error) => {
-      console.error("Error:", error);
-    },
-  });
-
-  const handleSendQuestion = () => {
-    if (message.trim() === "") return;
-
-    chatHistory.unshift({ userMessage: message, botResponse: "" });
-
-    setChatHistory(chatHistory);
-
-    setMessage("");
-    mutate(message);
-  };
-
-  const handleInputMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setMessage(e.target.value);
-  };
-
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key === "Enter") {
-      handleSendQuestion();
-    }
-  };
-  const handleOpenChat = () => {
-    setOpen(!open);
-  };
-
-  useEffect(() => {
-    if (chatHistory.length === 0) {
-      initializeChatHistory();
-      setChatHistory(getChatHistory());
-    }
-    if (!open) {
-      setChatHistory([]);
-      localStorage.clear();
-      return;
-    }
-  }, [open]);
+  const { open, handleOpenChat, chatHistory, isError, isLoading } = useEditor();
 
   return (
-    <div className="container">
+    <ChatbotStyled>
       <div className="chatbox">
         <div
           className="chatbox__support"
@@ -90,7 +28,7 @@ export const ChatInterface = () => {
             <img
               src={iconClose}
               alt="fechar"
-              onClick={handleOpenChat}
+              onClick={() => handleOpenChat()}
               style={{ cursor: "pointer" }}
             />
           </div>
@@ -115,36 +53,18 @@ export const ChatInterface = () => {
                     ) : (
                       data.botResponse
                     )}
+                    {isError &&
+                      !isLoading &&
+                      "Ocorreu um erro. Tente novamente"}
                   </p>
                 </div>
               </div>
             ))}
           </div>
-          <div className="chatbox__footer">
-            <textarea
-              placeholder="Digite sua dúvida aqui..."
-              onChange={handleInputMessage}
-              onKeyUp={handleKeyPress}
-              value={message}
-              dir="auto"
-              rows={1}
-            />
-            <button
-              className="chatbox__send--footer send__button"
-              onClick={() => handleSendQuestion()}
-            >
-              <img src={iconSend} alt="enviar mensagem" width={25} />
-            </button>
-          </div>
+          <InputMessage />
         </div>
-        <div className="chatbox__button">
-          <button onClick={handleOpenChat} type="button">
-            <img src={iconChat} alt="icone do chat" />
-          </button>
-        </div>
+        <ChatButton />
       </div>
-
-      {isError && <p>Error sending message</p>}
-    </div>
+    </ChatbotStyled>
   );
 };

@@ -1,11 +1,11 @@
-import "./Spinner.css";
+import { SpinnerStyled } from "./styled";
 
 export const Spinner = () => {
   return (
-    <div className="loading-dots">
+    <SpinnerStyled>
       <div className="dot"></div>
       <div className="dot"></div>
       <div className="dot"></div>
-    </div>
+    </SpinnerStyled>
   );
 };

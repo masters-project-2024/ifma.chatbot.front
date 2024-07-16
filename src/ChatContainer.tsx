@@ -1,9 +1,7 @@
-import React from "react";
-import { ChatContainer } from "./ChatContainer";
-import { EditorProvider } from "./Provider";
 import ChatInterface from "./components/ChatInterface";
+import { EditorProvider } from "./Provider";
 
-function App() {
+export const ChatContainer = (): JSX.Element => {
   return (
     <>
       <EditorProvider>
@@ -11,6 +9,4 @@ function App() {
       </EditorProvider>
     </>
   );
-}
-
-export default App;
+};
