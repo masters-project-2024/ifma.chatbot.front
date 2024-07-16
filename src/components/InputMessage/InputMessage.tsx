@@ -14,10 +14,7 @@ export const InputMessage = () => {
         dir="auto"
         rows={1}
       />
-      <button
-        className="chatbox__send--footer send__button"
-        onClick={() => handleSendQuestion()}
-      >
+      <button className="button__send" onClick={() => handleSendQuestion()}>
         <img src={iconSend} alt="enviar mensagem" width={25} />
       </button>
     </InputMessageStyled>

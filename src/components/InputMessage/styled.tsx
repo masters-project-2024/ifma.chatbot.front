@@ -13,6 +13,13 @@ export const InputMessageStyled = styled.div`
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 
+  .button__send {
+    padding: 6px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
   textarea {
     width: 80%;
     border: none;

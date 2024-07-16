@@ -1,5 +1,4 @@
 import React from "react";
-import { ChatContainer } from "./ChatContainer";
 import { EditorProvider } from "./Provider";
 import ChatInterface from "./components/ChatInterface";
 
