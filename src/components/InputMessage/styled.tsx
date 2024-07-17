@@ -31,10 +31,12 @@ export const InputMessageStyled = styled.div`
     overflow-y: auto;
     max-height: 80px;
     resize: none;
+    :focus {
+      outline: none;
+    }
   }
 
   .chatbox__button button,
-  .chatbox__button button:focus,
   .chatbox__button button:visited {
     padding: 10px;
     background: white;
