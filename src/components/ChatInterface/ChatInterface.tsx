@@ -33,6 +33,19 @@ export const ChatInterface = () => {
             />
           </div>
           <div className="chatbox__messages">
+            {chatHistory.length === 0 && (
+              <div className="bot-container">
+                <img
+                  className="img-chat"
+                  src={imageIfma}
+                  alt="Logo do ifma"
+                  width={"100%"}
+                />
+                <p className="bot-response">
+                  <Spinner />
+                </p>
+              </div>
+            )}
             {chatHistory?.map((data, index) => (
               <div key={index}>
                 {data.userMessage && (
@@ -55,6 +68,7 @@ export const ChatInterface = () => {
                     )}
                     {isError &&
                       !isLoading &&
+                      !data.botResponse &&
                       "Ocorreu um erro. Tente novamente"}
                   </p>
                 </div>

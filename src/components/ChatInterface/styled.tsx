@@ -89,6 +89,8 @@ export const ChatbotStyled = styled.div`
     border-radius: 8px;
     margin: 10px 5px;
     max-width: 75%;
+    word-break: break-word;
+    hyphens: auto;
   }
   .user {
     display: flex;
@@ -96,15 +98,15 @@ export const ChatbotStyled = styled.div`
   }
 
   .chatbox__messages .bot-response {
-    width: fit-content;
-    background-color: #c6c6c7;
-    padding: 5px;
-    border-radius: 8px;
     display: flex;
+    padding: 5px;
+    background-color: #c6c6c7;
+    font-weight: 300;
+    width: fit-content;
+    border-radius: 8px;
     align-items: center;
     margin: 10px 5px;
     max-width: 75%;
-    font-weight: 300;
   }
 
   .img-chat {

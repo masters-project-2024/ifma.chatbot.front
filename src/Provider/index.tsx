@@ -25,13 +25,15 @@ export function EditorProvider({ children }: EditorProviderProps): JSX.Element {
 
   const [message, setMessage] = useState<string>("");
   const [chatHistory, setChatHistory] = useState<PropsChat[]>([]);
-  const [response, setResponse] = useState<string>("");
 
   useEffect(() => {
-    if (chatHistory.length === 0) {
-      initializeChatHistory();
-      setChatHistory(getChatHistory());
+    if (chatHistory.length === 0 && open) {
+      setTimeout(() => {
+        initializeChatHistory();
+        setChatHistory(getChatHistory());
+      }, 1000);
     }
+
     if (!open) {
       setChatHistory([]);
       localStorage.clear();
@@ -43,7 +45,6 @@ export function EditorProvider({ children }: EditorProviderProps): JSX.Element {
     onSuccess: (data) => {
       if (data.response) addMessageToHistory(message, data.response);
       setChatHistory(getChatHistory());
-      // setResponse(data.response);
     },
     onError: (error) => {
       console.error("Error:", error);

@@ -20,6 +20,7 @@ export const InputMessageStyled = styled.div`
     outline: none;
     cursor: pointer;
   }
+
   textarea {
     width: 80%;
     border: none;
@@ -27,8 +28,9 @@ export const InputMessageStyled = styled.div`
     border-radius: 10px;
     text-align: left;
     font-size: 13px;
-    overflow-y: hidden;
-    /* resize: none;  VOU TER QUE MELHORAR ISSO AQUI */
+    overflow-y: auto;
+    max-height: 80px;
+    resize: none;
   }
 
   .chatbox__button button,
