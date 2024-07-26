@@ -1,5 +1,5 @@
-import iconSend from "../../public/images/send.svg";
-import { useEditor } from "../../Provider/Editor";
+import { useEditor } from "../../../../Provider/Editor";
+import iconSend from "../../../../public/images/send.svg";
 import { InputMessageStyled } from "./styled";
 import { useEffect, useRef, useState } from "react";
 export const InputMessage = () => {

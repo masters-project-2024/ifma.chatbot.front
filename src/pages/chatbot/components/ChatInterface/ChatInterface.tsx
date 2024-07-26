@@ -1,11 +1,11 @@
 // import { ChatbotStyled } from "./styled";
-import imageIfma from "../../public/images/logo.png";
-import iconClose from "../../public/images/close.svg";
+import imageIfma from "../../../../public/images/logo.png";
+import iconClose from "../../../../public/images/close.svg";
 import Spinner from "../Spinner";
 import { ChatbotStyled } from "./styled";
 import ChatButton from "../ChatButton";
 import InputMessage from "../InputMessage";
-import { useEditor } from "../../Provider/Editor";
+import { useEditor } from "../../../../Provider/Editor";
 
 export const ChatInterface = () => {
   const { open, handleOpenChat, chatHistory, isError, isLoading } = useEditor();

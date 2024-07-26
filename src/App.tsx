@@ -1,12 +1,13 @@
 import React from "react";
 import { EditorProvider } from "./Provider";
-import ChatInterface from "./components/ChatInterface";
+import CornerChat from "./pages/chatbot/components/ChatInterface"; // PEQUENO CHAT
+import FullScreenChat from "./pages/chatbotPage/components/ChatInterface"; //CHAT QUE FICA EM TODA TELA
 
 function App() {
   return (
     <>
       <EditorProvider>
-        <ChatInterface />
+        <FullScreenChat />
       </EditorProvider>
     </>
   );

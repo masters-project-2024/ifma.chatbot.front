@@ -7,8 +7,17 @@ import {
 } from "../utils/storage";
 import { useMutation } from "react-query";
 import sendMessage from "../services/sendMessage";
-import { PropsChat } from "../components/types";
 import { createContext } from "use-context-selector";
+import { PropsChat } from "../pages/chatbot/components/types";
+
+function appendIfNotPresent(message: string) {
+  const wordsToAdd = ["IFMA"];
+  const allWordsPresent = wordsToAdd.every((word) => message.includes(word));
+  if (!allWordsPresent) {
+    message = `${message} IFMA`;
+  }
+  return message.replace(/\n/g, " ");
+}
 
 export const Editor = createContext({} as EditorContextType);
 
@@ -27,19 +36,26 @@ export function EditorProvider({ children }: EditorProviderProps): JSX.Element {
   const [chatHistory, setChatHistory] = useState<PropsChat[]>([]);
 
   useEffect(() => {
-    if (chatHistory.length === 0 && open) {
+    // if (chatHistory.length === 0 && open) {
+    if (chatHistory.length === 0) {
       setTimeout(() => {
         initializeChatHistory();
         setChatHistory(getChatHistory());
       }, 1000);
     }
 
-    if (!open) {
-      setChatHistory([]);
-      localStorage.clear();
-      return;
-    }
-  }, [open]);
+    // if (!open) {
+    //   setChatHistory([]);
+    //   localStorage.clear();
+    //   return;
+    // }
+  }, []);
+
+  window.addEventListener("beforeunload", (event) => {
+    // Clear localStorage before the page unloads
+    setChatHistory([]);
+    localStorage.clear();
+  });
 
   const { isLoading, mutate, isError } = useMutation(sendMessage, {
     onSuccess: (data) => {
@@ -59,6 +75,7 @@ export function EditorProvider({ children }: EditorProviderProps): JSX.Element {
     setChatHistory(chatHistory);
 
     setMessage("");
+    // mutate(appendIfNotPresent(message));
     mutate(message);
   };
 

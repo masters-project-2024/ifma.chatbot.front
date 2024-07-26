@@ -107,6 +107,8 @@ export const ChatbotStyled = styled.div`
     align-items: center;
     margin: 10px 5px;
     max-width: 75%;
+    word-break: break-word;
+    hyphens: auto;
   }
 
   .img-chat {

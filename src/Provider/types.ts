@@ -1,4 +1,4 @@
-import { PropsChat } from "../components/types";
+import { PropsChat } from "../pages/chatbot/components/types";
 
 export type EditorContextType = {
   handleOpenChat: () => void;
